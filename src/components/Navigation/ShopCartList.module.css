@@ -1,0 +1,38 @@
+.empty-cart p {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 48px;
+  margin-top: 28px;
+}
+
+.empty-cart hr {
+  border: none;
+  height: 1.5px;
+  background-color: #c92a2a;
+  margin-bottom: 18px;
+}
+
+.total-price {
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.btns {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-btn {
+  background-color: #fff;
+  border: 1px solid #c92a2a;
+  color: #c92a2a;
+  font-size: 14px;
+  font-weight: 600;
+  width: 90px;
+  height: 35px;
+  border-radius: 18px;
+  cursor: pointer;
+}

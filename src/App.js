@@ -8,13 +8,15 @@ const storedOrders = [];
 
 function App() {
   const [orders, setorders] = useState(storedOrders);
+  const [shopCartOrders, setShopCartOrders] = useState(storedOrders);
+  const [showModal, setShowModal] = useState(false);
 
   function OrderHandler(orderData) {
-    setorders((previousState) => {
+    setorders((previous) => [...previous, orderData]);
+    setShopCartOrders((previousState) => {
       const repeatedOrder = previousState.find(
         (element) => orderData.title === element.title
       );
-
       if (repeatedOrder) {
         repeatedOrder.amount = repeatedOrder.amount + orderData.amount;
         return previousState;
@@ -24,11 +26,24 @@ function App() {
     });
   }
 
-  console.log(orders);
+  function shopCartHandler() {
+    setShowModal(true);
+  }
+
+  function closeModalHandler() {
+    setShowModal(false);
+  }
+
   return (
     <>
       <BackgroundImage />
-      <Navigation orders={orders} />
+      <Navigation
+        orders={orders}
+        shopCartOrders={shopCartOrders}
+        onShopCartHandler={shopCartHandler}
+        isHidden={!showModal}
+        onCloseModalHandler={closeModalHandler}
+      />
       <MainArticle />
       <FoodList onOrderHandler={OrderHandler} />
     </>
