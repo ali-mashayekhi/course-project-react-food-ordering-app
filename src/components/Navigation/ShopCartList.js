@@ -3,7 +3,8 @@ import styles from "./ShopCartList.module.css";
 
 function ShopCartList(props) {
   let JSXContent;
-  if (props.shopCartOrders.length <= 0) {
+
+  if (props.ultimateOrders.length <= 0) {
     JSXContent = (
       <div className={styles["empty-cart"]}>
         <p>There is no item in your shop cart yet!</p>

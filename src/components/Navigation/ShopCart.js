@@ -7,19 +7,15 @@ function ShopCart(props) {
   const [resized, setResized] = useState(false);
 
   useEffect(() => {
-    if (props.orders.length <= 0) return;
-
-    // props.orders;
-
-    const amount = props.shopCartOrders.reduce(
-      (accumulator, currentValue) => accumulator + currentValue.amount,
-      0
-    );
-    setShopCartAmount(amount);
-
+    if (props.ultimateOrders.length <= 0) return;
     setResized(true);
     setTimeout(() => setResized(false), 50);
-  }, [props.orders, props.shopCartOrders]);
+
+    const amount = props.ultimateOrders.reduce((acc, curr) => {
+      return acc + curr.amount;
+    }, 0);
+    setShopCartAmount(amount);
+  }, [props.ultimateOrders]);
 
   return (
     <>
@@ -43,7 +39,7 @@ function ShopCart(props) {
         <p className={styles["cart-number"]}>{shopCartAmount}</p>
       </button>
       <ShopCartList
-        shopCartOrders={props.shopCartOrders}
+        ultimateOrders={props.ultimateOrders}
         isHidden={props.isHidden}
         onCloseModalHandler={props.onCloseModalHandler}
       />
