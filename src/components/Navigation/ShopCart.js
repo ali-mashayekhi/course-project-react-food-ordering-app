@@ -1,21 +1,24 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./ShopCart.module.css";
 import ShopCartList from "./ShopCartList";
+import { OrdersContext } from "../../store/orders-context";
+import { getOrdersSum } from "../../helpers/helpers";
 
 function ShopCart(props) {
   const [shopCartAmount, setShopCartAmount] = useState(0);
   const [resized, setResized] = useState(false);
 
+  const orders = useContext(OrdersContext);
+
   useEffect(() => {
-    if (props.ultimateOrders.length <= 0) return;
+    if (orders.length <= 0) return;
     setResized(true);
     setTimeout(() => setResized(false), 50);
 
-    const amount = props.ultimateOrders.reduce((acc, curr) => {
-      return acc + curr.amount;
-    }, 0);
+    const amount = getOrdersSum(orders).totalOrders;
+
     setShopCartAmount(amount);
-  }, [props.ultimateOrders]);
+  }, [orders]);
 
   return (
     <>
@@ -38,11 +41,12 @@ function ShopCart(props) {
         <p className={styles["cart-title"]}>Your Cart</p>
         <p className={styles["cart-number"]}>{shopCartAmount}</p>
       </button>
-      <ShopCartList
+      {/* <ShopCartList
+        ultimateOrders={orders}
         ultimateOrders={props.ultimateOrders}
         isHidden={props.isHidden}
         onCloseModalHandler={props.onCloseModalHandler}
-      />
+      /> */}
     </>
   );
 }
