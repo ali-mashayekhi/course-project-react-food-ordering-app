@@ -7,21 +7,19 @@ import { useState } from "react";
 const storedOrders = [];
 
 function App() {
-  const [orders, setorders] = useState(storedOrders);
-  const [shopCartOrders, setShopCartOrders] = useState(storedOrders);
   const [showModal, setShowModal] = useState(false);
+  const [ultimateOrders, setUltimateOrders] = useState(storedOrders);
 
   function OrderHandler(orderData) {
-    setorders((previous) => [...previous, orderData]);
-    setShopCartOrders((previousState) => {
+    setUltimateOrders((previousState) => {
       const repeatedOrder = previousState.find(
         (element) => orderData.title === element.title
       );
       if (repeatedOrder) {
         repeatedOrder.amount = repeatedOrder.amount + orderData.amount;
-        return previousState;
+        return [...previousState];
       } else {
-        return [...previousState, orderData];
+        return [...previousState, { ...orderData }];
       }
     });
   }
@@ -38,8 +36,9 @@ function App() {
     <>
       <BackgroundImage />
       <Navigation
-        orders={orders}
-        shopCartOrders={shopCartOrders}
+        // orders={orders}
+        // shopCartOrders={shopCartOrders}
+        ultimateOrders={ultimateOrders}
         onShopCartHandler={shopCartHandler}
         isHidden={!showModal}
         onCloseModalHandler={closeModalHandler}
