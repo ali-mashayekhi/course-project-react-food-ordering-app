@@ -6,7 +6,6 @@ function Navigation(props) {
     <div className={styles.navigation}>
       <p className={styles.title}>ReactMeals</p>
       <ShopCart
-        ultimateOrders={props.ultimateOrders}
         onShopCartHandler={props.onShopCartHandler}
         isHidden={props.isHidden}
         onCloseModalHandler={props.onCloseModalHandler}

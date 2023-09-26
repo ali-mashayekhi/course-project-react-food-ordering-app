@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { OrdersDispatchContext } from "../../store/orders-context";
 import styles from "./ListItem.module.css";
 
 function ListItem(props) {
   const [enteredAmount, setEnteredAmount] = useState("1");
+  const dispatchOrders = useContext(OrdersDispatchContext);
 
   function enteredAmountChangeHandler(event) {
     setEnteredAmount(event.target.value);
@@ -11,11 +13,20 @@ function ListItem(props) {
   function orderSubmitHandler(event) {
     event.preventDefault();
 
-    props.onOrderHandler({
-      title: props.title,
-      price: props.price,
-      amount: +event.target[0].value,
+    dispatchOrders({
+      type: "add-new-order",
+      orderData: {
+        title: props.title,
+        price: props.price,
+        amount: +event.target[0].value,
+      },
     });
+
+    // props.onOrderHandler({
+    //   title: props.title,
+    //   price: props.price,
+    //   amount: +event.target[0].value,
+    // });
   }
 
   return (
