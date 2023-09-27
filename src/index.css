@@ -8,7 +8,6 @@ Font Grays: #f8f9fa , #f1f3f5, #e9ecef
 * {
   margin: 0;
   padding: 0;
-  /* border: none; */
   box-sizing: border-box;
   line-height: 1;
 }
@@ -19,5 +18,4 @@ body {
   position: relative;
   color: #f8f9fa;
   border-top: 1px solid #c92a2a;
-  /* overflow: hidden; */
 }

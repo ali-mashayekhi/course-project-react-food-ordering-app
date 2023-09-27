@@ -19,6 +19,7 @@ function ListItem(props) {
         title: props.title,
         price: props.price,
         amount: +event.target[0].value,
+        id: Math.random(),
       },
     });
 
