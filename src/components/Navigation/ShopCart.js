@@ -41,12 +41,10 @@ function ShopCart(props) {
         <p className={styles["cart-title"]}>Your Cart</p>
         <p className={styles["cart-number"]}>{shopCartAmount}</p>
       </button>
-      {/* <ShopCartList
-        ultimateOrders={orders}
-        ultimateOrders={props.ultimateOrders}
+      <ShopCartList
         isHidden={props.isHidden}
         onCloseModalHandler={props.onCloseModalHandler}
-      /> */}
+      />
     </>
   );
 }
