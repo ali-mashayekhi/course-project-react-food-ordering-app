@@ -5,11 +5,7 @@ function Navigation(props) {
   return (
     <div className={styles.navigation}>
       <p className={styles.title}>ReactMeals</p>
-      <ShopCart
-        onShopCartHandler={props.onShopCartHandler}
-        isHidden={props.isHidden}
-        onCloseModalHandler={props.onCloseModalHandler}
-      />
+      <ShopCart />
     </div>
   );
 }

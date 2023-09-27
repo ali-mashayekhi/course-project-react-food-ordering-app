@@ -4,19 +4,30 @@ import ShopCartList from "./ShopCartList";
 import { OrdersContext } from "../../store/orders-context";
 import { getOrdersSum } from "../../helpers/helpers";
 
-function ShopCart(props) {
+function ShopCart() {
   const [shopCartAmount, setShopCartAmount] = useState(0);
   const [resized, setResized] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const orders = useContext(OrdersContext);
 
+  function shopCartHandler() {
+    setShowModal(true);
+  }
+
+  function closeModalHandler() {
+    setShowModal(false);
+  }
+
   useEffect(() => {
+    // Change effects of ShopCart by adding or removing new order new order
+    // 1. grow in size
     if (orders.length <= 0) return;
     setResized(true);
+    // 2. resize to it's previous size after 50mlsec
     setTimeout(() => setResized(false), 50);
-
+    // 3. set numbre of orders
     const amount = getOrdersSum(orders).totalOrders;
-
     setShopCartAmount(amount);
   }, [orders]);
 
@@ -26,7 +37,7 @@ function ShopCart(props) {
         className={`${styles.cart} ${
           resized ? styles["cart__add-effect"] : ""
         }`}
-        onClick={props.onShopCartHandler}
+        onClick={shopCartHandler}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -42,8 +53,8 @@ function ShopCart(props) {
         <p className={styles["cart-number"]}>{shopCartAmount}</p>
       </button>
       <ShopCartList
-        isHidden={props.isHidden}
-        onCloseModalHandler={props.onCloseModalHandler}
+        isHidden={!showModal}
+        onCloseModalHandler={closeModalHandler}
       />
     </>
   );

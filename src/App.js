@@ -6,24 +6,10 @@ import OrdersContextProvider from "./store/orders-context";
 import { useState } from "react";
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-
-  function shopCartHandler() {
-    setShowModal(true);
-  }
-
-  function closeModalHandler() {
-    setShowModal(false);
-  }
-
   return (
     <OrdersContextProvider>
       <BackgroundImage />
-      <Navigation
-        onShopCartHandler={shopCartHandler}
-        isHidden={!showModal}
-        onCloseModalHandler={closeModalHandler}
-      />
+      <Navigation />
       <MainArticle />
       <FoodList />
     </OrdersContextProvider>
