@@ -6,14 +6,14 @@ import { getOrdersSum } from "../../helpers/helpers";
 import ShopCartItem from "./ShopCartItem";
 
 function ShopCartList(props) {
-  const orders = useContext(OrdersContext);
+  const { orders } = useContext(OrdersContext);
 
   const emptyCartMessage = (
     <div className={styles["empty-cart"]}>
       <p>There is no item in your shop cart yet!</p> <hr />
     </div>
   );
-  console.log(orders);
+
   const ordersList = orders.map((order) => {
     return (
       <ShopCartItem

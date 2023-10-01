@@ -1,4 +1,7 @@
 export function getOrdersSum(orders) {
+  if (orders.length === 0) {
+    return { totalOrders: 0, totalPrice: 0 };
+  }
   return orders.reduce(
     (acc, curr) => {
       return {
