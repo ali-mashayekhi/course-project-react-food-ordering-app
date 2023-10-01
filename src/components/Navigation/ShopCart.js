@@ -9,7 +9,7 @@ function ShopCart() {
   const [resized, setResized] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const orders = useContext(OrdersContext);
+  const { orders, status } = useContext(OrdersContext);
 
   function shopCartHandler() {
     setShowModal(true);
@@ -22,7 +22,8 @@ function ShopCart() {
   useEffect(() => {
     // Change effects of ShopCart by adding or removing new order new order
     // 1. grow in size
-    if (orders.length <= 0) return;
+    if (orders.length <= 0 && status === "disabled") return;
+
     setResized(true);
     // 2. resize to it's previous size after 50mlsec
     setTimeout(() => setResized(false), 50);
