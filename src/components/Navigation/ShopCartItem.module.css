@@ -42,15 +42,16 @@
 .btn {
   background-color: #fff;
   color: #c92a2a;
-  width: 45px;
-  height: 30px;
+  padding: 5px 15px;
   border: solid 1px #c92a2a99;
   font-size: 22px;
   border-radius: 8px;
   cursor: pointer;
 }
+
 .btn:hover {
-  background-color: #f3f3f3;
+  background-color: #c92a2a;
+  color: #fff;
 }
 
 .divider-line {

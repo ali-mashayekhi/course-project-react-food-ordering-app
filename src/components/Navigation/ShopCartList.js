@@ -13,9 +13,11 @@ function ShopCartList(props) {
       <p>There is no item in your shop cart yet!</p> <hr />
     </div>
   );
+  console.log(orders);
   const ordersList = orders.map((order) => {
     return (
       <ShopCartItem
+        order={order}
         title={order.title}
         price={order.price}
         amount={order.amount}
