@@ -30,7 +30,7 @@ function ShopCart() {
     // 3. set numbre of orders
     const amount = getOrdersSum(orders).totalOrders;
     setShopCartAmount(amount);
-  }, [orders]);
+  }, [orders, status]);
 
   return (
     <>

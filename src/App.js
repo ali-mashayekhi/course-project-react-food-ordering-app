@@ -3,7 +3,6 @@ import BackgroundImage from "./components/UI/BackgroundImage/BackgroundImage";
 import MainArticle from "./components/UI/MainArticle/MainArticle";
 import FoodList from "./components/FoodList/FoodList";
 import OrdersContextProvider from "./store/orders-context";
-import { useState } from "react";
 
 function App() {
   return (

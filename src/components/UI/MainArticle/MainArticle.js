@@ -1,6 +1,6 @@
 import styles from "./MainArticle.module.css";
 
-function MainArticle(props) {
+function MainArticle() {
   return (
     <div className={styles.main}>
       <h2>Delicios Food, Delivered to You</h2>
