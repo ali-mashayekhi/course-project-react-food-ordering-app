@@ -1,18 +1,11 @@
-import Navigation from "./components/Navigation/Navigation";
-import BackgroundImage from "./components/UI/BackgroundImage/BackgroundImage";
-import MainArticle from "./components/UI/MainArticle/MainArticle";
-import FoodList from "./components/FoodList/FoodList";
-import OrdersContextProvider from "./store/orders-context";
+import { Fragment } from "react";
+import Header from "./components/Layout/Header";
 
 function App() {
   return (
-    <OrdersContextProvider>
-      <BackgroundImage />
-      <Navigation />
-      <MainArticle />
-      <FoodList />
-    </OrdersContextProvider>
+    <Fragment>
+      <Header />
+    </Fragment>
   );
 }
-
 export default App;
