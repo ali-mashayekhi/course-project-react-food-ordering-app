@@ -45,6 +45,5 @@
 }
 
 .cart__add-effect {
-  height: 60px;
-  width: 300px;
+  transform: scale(1.2);
 }
