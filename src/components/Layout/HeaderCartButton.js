@@ -15,5 +15,3 @@ function HeaderCartButton(props) {
 }
 
 export default HeaderCartButton;
-
-// Go to main branch and check scale function for transforming button
