@@ -15,4 +15,15 @@
 .summary h2 {
   font-size: 2rem;
   margin-top: 0;
+  margin-bottom: 32px;
+}
+
+.summary p {
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.summary p:last-child {
+  margin-bottom: 0;
 }
