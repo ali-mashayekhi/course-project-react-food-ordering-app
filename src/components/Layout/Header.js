@@ -8,7 +8,9 @@ function Header(props) {
     <Fragment>
       <header className={styles.header}>
         <h1>ReactMeals</h1>
-        <HeaderCartButton>Cart</HeaderCartButton>
+        <HeaderCartButton onShowModalHandler={props.onShowModalHandler}>
+          Cart
+        </HeaderCartButton>
       </header>
       <div className={styles["main-image"]}>
         <img
