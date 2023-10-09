@@ -5,9 +5,12 @@ import CartContext from "../../store/cart-context";
 import styles from "./HeaderCartButton.module.css";
 
 function HeaderCartButton(props) {
-  const cartCtx = useContext(CartContext).totalAmount;
+  const cartCtx = useContext(CartContext);
 
-  const numberOfCartItems = cartCtx.totalAmount;
+  const numberOfCartItems = cartCtx.items.reduce(
+    (acc, current) => acc + current.amount,
+    0
+  );
 
   return (
     <button className={styles.button} onClick={props.onShowModalHandler}>

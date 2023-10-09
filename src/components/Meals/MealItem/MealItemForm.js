@@ -1,7 +1,11 @@
 import Input from "../../UI/Input";
 import styles from "./MealItemform.module.css";
+import CartContext from "../../../store/cart-context";
+import { useContext } from "react";
 
 function MealItemForm(props) {
+  const cartCtx = useContext(CartContext);
+
   return (
     <form className={styles.form}>
       <Input
