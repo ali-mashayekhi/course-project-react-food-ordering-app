@@ -1,14 +1,21 @@
+import { useRef } from "react";
+
 import Input from "../../UI/Input";
 import styles from "./MealItemform.module.css";
-import CartContext from "../../../store/cart-context";
-import { useContext } from "react";
 
 function MealItemForm(props) {
-  const cartCtx = useContext(CartContext);
+  const enteredAmount = useRef(null);
+  console.log(enteredAmount);
+  function submitHandler(e) {
+    e.preventDefault();
+
+    console.log(enteredAmount);
+  }
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={submitHandler}>
       <Input
+        ref={enteredAmount}
         input={{
           id: `Amount_${props.id}`,
           type: "number",

@@ -1,5 +1,7 @@
 import styles from "./MealItem.module.css";
 import MealItemForm from "./MealItemForm";
+import CartContext from "../../../store/cart-context";
+import { useContext } from "react";
 function MealItem(props) {
   const price = `$${props.price.toFixed(2)}`;
   return (
