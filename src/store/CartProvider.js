@@ -37,33 +37,54 @@ const defaultCartState = {
 
 function cartReducer(state, action) {
   if (action.type === "ADD") {
-    // const index = state.items.findIndex((curr) => {
-    //   return curr.name === action.item.name;
-    // });
-    // if (index) {
-    //   const updatedTotalAmount =
-    //     state.totalAmount + action.item.price * action.item.price;
-    //   return {
-    //     ...state,
-    //     totalAmount: updatedTotalAmount,
-    //   };
-    // } else {
-
-    const updatedItems = state.items.concat(action.item);
-    const updatedTotalAmount =
-      state.totalAmount + action.item.price * action.item.price;
-
-    console.log({
-      // ...state,
-      items: updatedItems,
-      totalAmount: updatedTotalAmount,
+    const existingItemIndex = state.items.findIndex((curr) => {
+      return curr.id === action.item.id;
     });
+    const updatedTotalAmount =
+      state.totalAmount + action.item.price * action.item.amount;
 
-    return {
-      // ...state,
-      items: updatedItems,
-      totalAmount: updatedTotalAmount,
-    };
-    // }
+    if (existingItemIndex !== -1) {
+      const updatedItems = [...state.items];
+      const updatedItem = {
+        ...state.items[existingItemIndex],
+        amount: updatedItems[existingItemIndex].amount + action.item.amount,
+      };
+      updatedItems[existingItemIndex] = updatedItem;
+      return {
+        items: updatedItems,
+        totalAmount: updatedTotalAmount,
+      };
+    } else {
+      const updatedItems = state.items.concat(action.item);
+      return {
+        items: updatedItems,
+        totalAmount: updatedTotalAmount,
+      };
+    }
+  }
+
+  if (action.type === "REMOVE") {
+    const existingItemIndex = state.items.findIndex((curr) => {
+      return curr.id === action.id;
+    });
+    const updatedTotalAmount =
+      state.totalAmount - state.items[existingItemIndex].price;
+
+    if (state.items[existingItemIndex].amount === 1) {
+      const newItems = [
+        ...state.items.slice(0, existingItemIndex),
+        ...state.items.slice(existingItemIndex + 1, state.items.length),
+      ];
+
+      return { items: newItems, totalAmount: updatedTotalAmount };
+    } else {
+      const updatedItems = [...state.items];
+      updatedItems[existingItemIndex].amount--;
+
+      return {
+        items: updatedItems,
+        totalAmount: updatedTotalAmount,
+      };
+    }
   }
 }
