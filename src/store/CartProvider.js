@@ -71,15 +71,20 @@ function cartReducer(state, action) {
       state.totalAmount - state.items[existingItemIndex].price;
 
     if (state.items[existingItemIndex].amount === 1) {
-      const newItems = [
-        ...state.items.slice(0, existingItemIndex),
-        ...state.items.slice(existingItemIndex + 1, state.items.length),
-      ];
+      // const newItems = [
+      //   ...state.items.slice(0, existingItemIndex),
+      //   ...state.items.slice(existingItemIndex + 1, state.items.length),
+      // ];
 
+      const newItems = state.items.filter((item) => item.id !== action.id);
       return { items: newItems, totalAmount: updatedTotalAmount };
     } else {
+      const updatedItem = {
+        ...state.items[existingItemIndex],
+        amount: state.items[existingItemIndex].amount - 1,
+      };
       const updatedItems = [...state.items];
-      updatedItems[existingItemIndex].amount--;
+      updatedItems[existingItemIndex] = updatedItem;
 
       return {
         items: updatedItems,

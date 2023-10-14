@@ -10,7 +10,7 @@ function MealItemForm(props) {
   function submitHandler(e) {
     e.preventDefault();
     const enteredAmountNumber = +enteredAmount.current.value;
-    console.log(enteredAmount);
+
     if (
       enteredAmount.current.value.trim().length === 0 ||
       enteredAmountNumber > 5 ||
